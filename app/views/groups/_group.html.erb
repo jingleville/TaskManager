@@ -1,0 +1,18 @@
+<div id="<%= dom_id group %>">
+  <p>
+    <strong>Title:</strong>
+    <%= group.title %>
+  </p>
+
+</div>
+
+
+<%= turbo_frame_tag group do %>
+    <div class="group-header">
+      <h2> 
+        <strong> 
+          <%= group.title %> 
+        </strong>
+      </h2> 
+    </div> 
+<% end %>

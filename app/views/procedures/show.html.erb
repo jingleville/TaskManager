@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @procedure %>
+
+<div>
+  <%= link_to "Edit this procedure", edit_group_procedure_path(@group, @procedure) %> |
+  <%= link_to "Back to procedures", group_procedures_path(@group) %>
+
+  <%= button_to "Destroy this procedure",  group_procedure_path(@group, @procedure), method: :delete %>
+</div>

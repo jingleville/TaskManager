@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Procedures</h1>
+
+<div id="procedures">
+  <% @procedures.each do |procedure| %>
+    <%= render procedure %>
+    <p>
+      <%= link_to "Show this procedure", group_procedure_path(@group, procedure) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New procedure", new_group_procedure_path(@group) %>
