@@ -12,8 +12,8 @@
       data: { turbo_method: "get" }, 
       class: 'btn btn-sm btn-primary'%>
 
-  <%= link_to 'Open', 
-      group_procedure_path(@procedure.group.id, @procedure.id), 
+  <%= link_to 'Create a project', 
+      new_group_procedure_path(@procedure.group.id, @procedure.id), 
       data: { turbo_method: "get" }, 
       class: 'btn btn-sm btn-success'%>       
 

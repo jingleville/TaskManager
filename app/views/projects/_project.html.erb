@@ -1,7 +1,5 @@
-<div id="<%= dom_id project %>">
-  <p>
-    <strong>Title:</strong>
-    <%= project.title %>
-  </p>
-
-</div>
+<%= turbo_frame_tag project, class: 'item' do %>
+  <div class="stage-project" id="project-<%= project.id%>-<%=project.procedure.id%>">
+    <span><strong><%= project.title %></strong></span>
+  </div>
+<% end %>
