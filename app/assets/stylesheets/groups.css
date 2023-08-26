@@ -1,0 +1,147 @@
+.group { 
+  align-content: start; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: start;   
+  column-gap: 20px; 
+  padding: 1em; 
+  height: max-content;
+  border-radius: 5px; 
+} 
+
+.group-title {
+  transition: all 0.5s;
+}
+
+.group-title:hover {
+  cursor: pointer;
+}
+
+.group-header{ 
+  align-content: start; 
+  display: flex; 
+  align-items: center; 
+  column-gap: 20px; 
+  padding: 1em; 
+} 
+ 
+.group-procedures{ 
+  align-content: start; 
+  flex-wrap: wrap; 
+  display: flex; 
+  flex: auto; 
+  align-items: start; 
+  padding: 1em; 
+} 
+ 
+.group-card{ 
+  align-content: end;
+  background: #AAAE7F; 
+  width: 200px; 
+  height: max-content;
+  min-height: 130px;
+  border-radius: 5px; 
+  font-size: small; 
+  padding: 10px; 
+  margin: 10px; 
+  transition: all 0.5s;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.group-card:hover{
+  background: #D0D6B3; 
+
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.3),
+             0 0  0 3px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.6);
+}
+
+.new-procedure-name {
+  border-radius: 5px;
+  width: 160px;
+  margin: 0 0 5px;
+}
+
+.group-btn-group {
+  display: flex;
+}
+
+.new-procedure-btn > input{
+  width: 160px; 
+}
+
+.animate {
+  animation-duration: 3s;
+  animation-name: slidein;
+}
+
+@keyframes slidein {
+  from {
+  margin-left: 200px; 
+  }
+
+  to {
+  margin-left: 10px; 
+  }
+}
+
+.stages {
+  align-content: start;
+  display: flex;
+  align-items: start;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  font-family: sans-serif;
+  column-gap: 20px;
+  padding: 1em;
+}
+
+.stage-card {
+  align-content: end;
+  padding: 10px; 
+  margin: 10px; 
+  width: 200px;
+  height: max-content;
+  border-radius: 5px; 
+  scroll-snap-align: center;
+  min-width: 200px;
+  font-size: small; 
+  background: hsl(0.3turn 60% 45% / .7);
+  transition: all 0.5s;
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.1),
+             0 0  0 2px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.3);
+}
+
+.stage-card:hover{
+
+  box-shadow:
+       inset 0 -3em 3em rgba(0,0,0,0.3),
+             0 0  0 3px rgb(255,255,255),
+             0.3em 0.3em 1em rgba(0,0,0,0.6);
+}
+
+.btn-approve {
+  background-color: white; /* Green */
+  border: none;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 80%;
+  height: 30px;
+  border-radius: 15px;
+  transition: all 0.5s;  
+}
+
+.btn-approve:hover {
+  width: 88%;
+  height: 33px;
+  border-radius: 16.5px;
+}

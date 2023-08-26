@@ -1,13 +1,4 @@
 <p style="color: green"><%= notice %></p>
-
+<%= link_to "Back to groups", groups_path %>
 <%= render @group %>
 
-<div class="group-btn-group" role="group">
-        <%= link_to "Edit", 
-            edit_group_path(@group.id), 
-            data: { turbo_method: "get" }, 
-            class: 'btn btn-sm btn-primary'%> 
-  <%= link_to "Back to groups", groups_path %>
-  <%= link_to "Add a procedure", new_group_procedure_path(@group) %>
-  <%= button_to "Destroy this group", @group, method: :delete, class: 'btn btn-sm btn-danger' %>
-</div>

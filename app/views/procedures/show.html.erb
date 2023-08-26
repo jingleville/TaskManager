@@ -1,10 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @procedure %>
+<h4 class="group-title">
+  <strong id=<%= @procedure.group.id%>-<%=@procedure.id%>>
+    <%= @procedure.title%>
+  </strong>
+</h4>
 
 <div>
-  <%= link_to "Edit this procedure", edit_group_procedure_path(@group, @procedure) %> |
-  <%= link_to "Back to procedures", group_procedures_path(@group) %>
+  <%= link_to 'Edit', 
+      edit_group_procedure_path(@procedure.group.id, @procedure.id), 
+      data: { turbo_method: "get" }, 
+      class: 'btn btn-sm btn-primary'%>
 
-  <%= button_to "Destroy this procedure",  group_procedure_path(@group, @procedure), method: :delete %>
+  <%= link_to 'Open', 
+      group_procedure_path(@procedure.group.id, @procedure.id), 
+      data: { turbo_method: "get" }, 
+      class: 'btn btn-sm btn-success'%>       
+
+  <%= link_to 'Destroy', 
+      group_procedure_path(@procedure.group.id,@procedure.id), 
+      data: { turbo_method: "delete",
+          action: "click->groups#destroyProcedure" }, 
+      class: 'btn btn-sm btn-danger' %>
 </div>
+
+<div class="stages">
+  <% @procedure.stages.each do |stage| %>
+    <%= render stage %>
+  <% end %>
+</div>
+
+  <%= link_to 'Add a stage', 
+      new_group_procedure_stage_path(@procedure.group.id, @procedure.id), 
+      data: { turbo_method: "get"}, 
+      class: 'btn btn-sm btn-success' %>

@@ -5,13 +5,16 @@
 
   <div id="groups">
     <% @groups.each do |group| %>
-      <%= render group %>
+      <div>
+        <h2> <strong> <%= group.title %> </strong> </h2> 
+      </div>      
+      
       <p>
-        <%= link_to "Show this group", group %>
+        <%= link_to "Show this group", group, class: 'btn btn-sm btn-primary' %>
       </p>
     <% end %>
   </div>
 
-  <%= link_to "New group", new_group_path %>
+  <%= link_to "New group", new_group_path, class: 'btn btn-sm btn-success' %>
 </div>
 

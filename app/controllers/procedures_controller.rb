@@ -22,7 +22,7 @@ class ProceduresController < ApplicationController
 
     respond_to do |format|
       if @procedure.save
-        format.html { redirect_to group_procedure_url(@group, @procedure), notice: "Procedure was successfully created." }
+        format.html { redirect_to @group, notice: "Procedure was successfully created." }
         format.json { render :show, status: :created, location: @procedure }
       else
         format.html { render :new, status: :unprocessable_entity }

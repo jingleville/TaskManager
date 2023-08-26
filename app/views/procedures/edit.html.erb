@@ -1,10 +1,13 @@
-<h1>Editing procedure</h1>
+<%= turbo_frame_tag @procedure do %>
+  <div class="group-card" >
+    <h1>Editing procedure</h1>
 
-<%= render "form", procedure: @procedure %>
+    <%= render "form", procedure: @procedure %>
 
-<br>
+    <br>
 
-<div>
-  <%= link_to "Show this procedure", @procedure %> |
-  <%= link_to "Back to procedures", procedures_path %>
-</div>
+    <div>
+      <%= link_to "Back to procedures", @group %>
+    </div>
+  </div>
+<% end %>

@@ -1,3 +1,27 @@
-<div id="<%= dom_id procedure %>">
-	<h1><%=procedure.title%></h1>
-</div>
+	<div class="group-card" 
+	     id=<%= procedure.group.id%>-<%=procedure.id%> 
+	     data-action="click->groups#getProcedure"
+	     data-groups-target="procedure"> 
+	  <h4 class="group-title">
+	  	<strong id=<%= procedure.group.id%>-<%=procedure.id%>>
+	    	<%= procedure.title%>
+	  	</strong>
+	  </h4>
+	  <div>
+	    <%= link_to 'Edit', 
+	    		edit_group_procedure_path(procedure.group.id, procedure.id), 
+	    		data: { turbo_method: "get" }, 
+	    		class: 'btn btn-sm btn-primary'%>
+
+	    <%= link_to 'Open', 
+	    		group_procedure_path(procedure.group.id, procedure.id), 
+	    		data: { turbo_method: "get" }, 
+	    		class: 'btn btn-sm btn-success'%>	    	
+
+	    <%= link_to 'Destroy', 
+	    		group_procedure_path(procedure.group.id,procedure.id), 
+	    		data: { turbo_method: "delete",
+	    				action: "click->groups#destroyProcedure" }, 
+	    		class: 'btn btn-sm btn-danger' %>
+	  </div>
+	</div> 

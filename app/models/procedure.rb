@@ -18,4 +18,5 @@
 #
 class Procedure < ApplicationRecord
 	belongs_to :group
+	has_many   :stages
 end

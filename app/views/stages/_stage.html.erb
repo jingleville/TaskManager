@@ -1,0 +1,29 @@
+<div  class="stage-card" 
+      style="background: gray;" 
+      id="stage-<%= stage.id%>" >
+
+  <h4>
+    <strong>
+      <%= stage.title %>
+    </strong>
+  </h4>
+
+  <div>
+    <%= link_to 'Edit', 
+        edit_group_procedure_stage_path(
+          stage.procedure.group.id,
+          stage.procedure.id,
+          stage), 
+        data: { turbo_method: "get" }, 
+        class: 'btn btn-sm btn-primary'%>
+    <%= link_to "Destroy",
+        group_procedure_stage_path(
+          stage.procedure.group.id,
+          stage.procedure.id,
+          stage.id), 
+        data:{
+          turbo_method: "delete",
+          turbo_confirm: "Are you sure?"}, 
+        class: 'btn btn-sm btn-danger' %>
+  </div>
+</div>
