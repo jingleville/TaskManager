@@ -22,4 +22,20 @@ class Stage < ApplicationRecord
 
   validates :procedure_id, uniqueness: { scope: :stage_number,
     message: "this order number isn't available" }
+
+  def next
+    if procedure.stages.maximum("stage_number") == stage_number
+      return 'already the last'
+    else
+      return procedure.stages.where("stage_number > ?", stage_number).first
+    end
+  end
+
+  def previous
+    if procedure.stages.minimum("stage_number") == stage_number
+      return 'already the first'
+    else
+      return procedure.stages.where("stage_number < ?", stage_number).last
+    end
+  end
 end

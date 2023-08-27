@@ -7,6 +7,7 @@ class ProceduresController < ApplicationController
   end
 
   def show
+    @stages = @procedure.stages.order(stage_number: :asc)
   end
 
   def new

@@ -1,5 +1,5 @@
 class StagesController < ApplicationController
-  before_action :set_stage, only: %i[ show edit update destroy ]
+  before_action :set_stage, only: %i[ show edit update destroy next previous]
   before_action :set_group, :set_procedure
 
   # GET /stages or /stages.json
@@ -56,6 +56,50 @@ class StagesController < ApplicationController
       format.html { redirect_to group_procedure_path(@group, @procedure), notice: "Stage was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def next
+    if @stage.next == 'already the last'
+      redirect_to group_procedure_path(@group, @procedure) 
+      return
+    end
+    next_stage = @stage.next
+    cur_stage_number = @stage.stage_number
+    next_stage_number = next_stage.stage_number
+
+    @stage.stage_number = nil
+    @stage.save
+    next_stage.stage_number = cur_stage_number
+
+    @procedure.stages.each do |stage|
+      p stage
+    end
+
+    next_stage.save!
+    
+    @stage.stage_number = next_stage_number
+    @stage.save!
+    redirect_to group_procedure_path(@group, @procedure)
+  end
+
+  def previous
+    if @stage.previous == 'already the first'
+      redirect_to group_procedure_path(@group, @procedure) 
+      return
+    end
+    previous_stage = @stage.previous
+    cur_stage_number = @stage.stage_number
+    previous_stage_number = previous_stage.stage_number
+
+    @stage.stage_number = nil
+    @stage.save
+    previous_stage.stage_number = cur_stage_number
+
+    previous_stage.save!
+    
+    @stage.stage_number = previous_stage_number
+    @stage.save!
+    redirect_to group_procedure_path(@group, @procedure)
   end
 
   private
