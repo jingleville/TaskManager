@@ -2,10 +2,11 @@
 #
 
 Rails.application.routes.draw do
-  resources :projects
+
   resources :groups do
     resources :procedures do
       resources :stages
+      resources :projects
       get '/groups/:group_id/procedures/:procedure_id/stages/:id/next', to: 'stages#next', as: 'stage_next'
       get '/groups/:group_id/procedures/:procedure_id/stages/:id/previous', to: 'stages#previous', as: 'stage_previous'
     end

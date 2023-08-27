@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @stages = @procedure.stages
+    @first_stage = @stages.find_by(stage_number: @stages.minimum('stage_number'))
   end
 
   # GET /projects/1/edit
@@ -21,8 +23,8 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-        format.json { render :show, status: :created, location: @project }
+        format.html { redirect_to group_procedure_path(@group, @procedure), notice: "Stage was successfully updated." }
+        format.json { render :show, status: :ok, location: @stage }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -34,8 +36,8 @@ class ProjectsController < ApplicationController
   def update
     respond_to do |format|
       if @project.update(project_params)
-        format.html { redirect_to project_url(@project), notice: "Project was successfully updated." }
-        format.json { render :show, status: :ok, location: @project }
+        format.html { redirect_to group_procedure_path(@group, @procedure), notice: "Stage was successfully updated." }
+        format.json { render :show, status: :ok, location: @stage }
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
@@ -69,6 +71,11 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:title, :position)
+      p params
+      @procedure = Procedure.find(params[:procedure_id])
+      @stages = @procedure.stages
+      params[:project][:stage_id] = @stages.find_by(stage_number: @stages.minimum('stage_number')).id
+      params[:project][:procedure_id] = params[:procedure_id]
+      params.require(:project).permit(:title, :position, :stage_id, :procedure_id)
     end
 end

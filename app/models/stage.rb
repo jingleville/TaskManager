@@ -19,7 +19,8 @@
 #
 class Stage < ApplicationRecord
   belongs_to :procedure
-
+  has_many :projects
+  
   validates :procedure_id, uniqueness: { scope: :stage_number,
     message: "this order number isn't available" }
 

@@ -13,7 +13,7 @@
       class: 'btn btn-sm btn-primary'%>
 
   <%= link_to 'Create a project', 
-      new_group_procedure_path(@procedure.group.id, @procedure.id), 
+      new_group_procedure_project_path(@procedure.group.id, @procedure.id), 
       data: { turbo_method: "get" }, 
       class: 'btn btn-sm btn-success'%>       
 

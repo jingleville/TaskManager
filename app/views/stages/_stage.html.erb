@@ -21,6 +21,11 @@
         class: 'btn btn-sm btn-primary' %>    
   </div>
   <div>
+    <% stage.projects.each do |project| %>
+      <%= render project %>
+    <% end %>
+  </div>
+  <div>
     
     <%= link_to 'Edit', 
         edit_group_procedure_stage_path(
