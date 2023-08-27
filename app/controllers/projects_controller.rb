@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy move_forward move_back ]
   before_action :set_group, :set_procedure
 
   # GET /projects/1 or /projects/1.json
@@ -53,6 +53,30 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def move_back
+    if @project.stage.next == 'already the last'
+      redirect_to group_procedure_path(@group, @procedure) 
+      return
+    end
+    @stage = @project.stage
+    next_stage = @stage.next
+    @project.stage_id = next_stage.id
+    @project.save
+    redirect_to group_procedure_path(@group, @procedure)
+  end
+
+  def move_forward
+    if @project.stage.previous == 'already the first'
+      redirect_to group_procedure_path(@group, @procedure) 
+      return
+    end
+    @stage = @project.stage
+    previous_stage = @stage.previous
+    @project.stage_id = previous_stage.id
+    @project.save
+    redirect_to group_procedure_path(@group, @procedure)  
   end
 
   private

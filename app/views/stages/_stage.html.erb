@@ -3,7 +3,7 @@
       id="stage-<%= stage.id%>" >
   <div style='display: flex;'>
     <%= link_to '<', 
-        group_procedure_stage_previous_path(
+        stage_previous_path(
           stage.procedure.group.id,
           stage.procedure.id,
           stage), 
@@ -14,7 +14,7 @@
       </strong>
     </h4>
     <%= link_to '>', 
-        group_procedure_stage_next_path(
+        stage_next_path(
           stage.procedure.group.id,
           stage.procedure.id,
           stage), 

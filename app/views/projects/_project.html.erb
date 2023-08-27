@@ -1,5 +1,10 @@
-<%= turbo_frame_tag project, class: 'item' do %>
-  <div class="stage-project" id="project-<%= project.id%>-<%=project.procedure.id%>">
+
+  <div class="stage-project" id="project-<%= project.id%>-<%=project.procedure.id%>" style="display: flex;">
+        <%= link_to '<', 
+        project_stage_next_path(project.procedure.group, project.procedure, project), 
+        class: 'btn btn-sm btn-primary' %>
     <span><strong><%= project.title %></strong></span>
+          <%= link_to '>', 
+        project_stage_back_path(project.procedure.group, project.procedure, project), 
+        class: 'btn btn-sm btn-primary' %> 
   </div>
-<% end %>
