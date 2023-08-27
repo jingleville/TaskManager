@@ -1,11 +1,10 @@
-
   <div class = "group"> 
     <div class="group-header">
       <div>
         <h2> <strong> <%= group.title %> </strong> </h2> 
       </div>
 
-      <div class="group-btn-group" role="group">
+      <div class="group-btn-group" role="group" style="display: flex;">
         <%= link_to "Edit", 
             edit_group_path(@group.id), 
             data: { turbo_method: "get" }, 
@@ -22,26 +21,9 @@
       </div>
 
     </div> 
-    <div class="group-procedures" data-controller="groups"> 
+    <div class="procedures" data-controller="groups"> 
       <% group.procedures.each_with_index do |procedure, index| %> 
         <%= render procedure, index: index %>
-      <%end%> 
-      <div  class = "group-card" 
-            data-group-target = "procedure" 
-            id = "<%= group.procedures.count %>"
-            style = "display: none;"> 
-        <h4><strong>New board</strong></h4> 
-        <div class="group-input">
-          <%= form_with model: [group, group.procedures.build ] do |form| %>
-            <div>
-              <%= form.text_field :title, class: 'new-procedure-name' %>
-            </div>
-
-            <div class='new-procedure-btn'>
-              <%= form.submit :Submit, class: 'btn btn-primary btn-sm' %>
-            </div>
-          <% end %>
-        </div> 
-      </div>            
+      <%end%>        
     </div>
   </div>

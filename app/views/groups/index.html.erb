@@ -1,20 +1,22 @@
-<div data-controller="groups">
+<div data-controller="groups" class="groups-container">
   <p style="color: green"><%= notice %></p>
 
   <h1>Groups</h1>
 
-  <div id="groups">
+  <div id="groups" class="groups-list">
     <% @groups.each do |group| %>
-      <div>
-        <h2> <strong> <%= group.title %> </strong> </h2> 
-      </div>      
-      
-      <p>
-        <%= link_to "Show this group", group, class: 'btn btn-sm btn-primary' %>
-      </p>
+      <div class="group-card">
+        <a href="/groups/<%= group.id %>" class="group-card_link">
+          <div class="group-card_bg"></div>
+          <div class="group-card_title">
+            <h2> <strong> <%= group.title %> </strong> </h2> 
+            <h4> <%= pluralize(group.procedures.count, "procedures") %> </h4> 
+            <h4> <%= pluralize(group.procedures.map { |procedure| procedure.projects.count }.sum, "projects") %> </h4> 
+          </div>      
+        </a>
+      </div>
     <% end %>
   </div>
 
   <%= link_to "New group", new_group_path, class: 'btn btn-sm btn-success' %>
 </div>
-

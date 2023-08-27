@@ -1,10 +1,16 @@
 
-  <div class="stage-project" id="project-<%= project.id%>-<%=project.procedure.id%>" style="display: flex;">
-        <%= link_to '<', 
+  
+    <div class="col-sm-auto">
+      <%= link_to '<', 
         project_stage_next_path(project.procedure.group, project.procedure, project), 
         class: 'btn btn-sm btn-primary' %>
-    <span><strong><%= project.title %></strong></span>
-          <%= link_to '>', 
+    </div>
+    <span class='col-md-auto'>
+      <strong><%= project.title %></strong>
+    </span>
+    <div class="col-sm-auto">
+      <%= link_to '>', 
         project_stage_back_path(project.procedure.group, project.procedure, project), 
         class: 'btn btn-sm btn-primary' %> 
-  </div>
+    </div>
+

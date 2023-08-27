@@ -1,147 +1,148 @@
-.group { 
-  align-content: start; 
-  display: flex; 
-  flex-direction: column; 
-  align-items: start;   
-  column-gap: 20px; 
-  padding: 1em; 
-  height: max-content;
-  border-radius: 5px; 
-} 
-
-.group-title {
-  transition: all 0.5s;
-}
-
-.group-title:hover {
-  cursor: pointer;
-}
-
-.group-header{ 
-  align-content: start; 
-  display: flex; 
-  align-items: center; 
-  column-gap: 20px; 
-  padding: 1em; 
-} 
- 
-.group-procedures{ 
-  align-content: start; 
-  flex-wrap: wrap; 
-  display: flex; 
-  flex: auto; 
-  align-items: start; 
-  padding: 1em; 
-} 
- 
-.group-card{ 
-  align-content: end;
-  background: #AAAE7F; 
-  width: 200px; 
-  height: max-content;
-  min-height: 130px;
-  border-radius: 5px; 
-  font-size: small; 
-  padding: 10px; 
-  margin: 10px; 
-  transition: all 0.5s;
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
-}
-
-.group-card:hover{
-  background: #D0D6B3; 
-
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.3),
-             0 0  0 3px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.6);
-}
-
-.new-procedure-name {
-  border-radius: 5px;
-  width: 160px;
-  margin: 0 0 5px;
-}
-
-.group-btn-group {
+.groups-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+
+  padding: 50px 0;
 }
 
-.new-procedure-btn > input{
-  width: 160px; 
+.group-card {
+  -ms-flex-preferred-size: calc(33.33333% - 30px);
+  flex-basis: calc(33.33333% - 30px);
+
+  margin: 0 15px 30px;
+
+  overflow: hidden;
+
+  border-radius: 28px;  
 }
 
-.animate {
-  animation-duration: 3s;
-  animation-name: slidein;
-}
+.group-card_link {
+  display: block;
+  padding: 30px 20px;
+  background-color: #121212;
 
-@keyframes slidein {
-  from {
-  margin-left: 200px; 
-  }
+  overflow: hidden;
 
-  to {
-  margin-left: 10px; 
-  }
-}
-
-.stages {
-  align-content: start;
-  display: flex;
-  align-items: start;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  font-family: sans-serif;
-  column-gap: 20px;
-  padding: 1em;
-}
-
-.stage-card {
-  align-content: end;
-  padding: 10px; 
-  margin: 10px; 
-  width: 200px;
-  height: max-content;
-  border-radius: 5px; 
-  scroll-snap-align: center;
-  min-width: 200px;
-  font-size: small; 
-  background: hsl(0.3turn 60% 45% / .7);
+  position: relative;
   transition: all 0.5s;
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.1),
-             0 0  0 2px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.3);
 }
 
-.stage-card:hover{
-
-  box-shadow:
-       inset 0 -3em 3em rgba(0,0,0,0.3),
-             0 0  0 3px rgb(255,255,255),
-             0.3em 0.3em 1em rgba(0,0,0,0.6);
-}
-
-.btn-approve {
-  background-color: white; /* Green */
-  border: none;
-  color: black;
-  text-align: center;
+.group-card_link:hover,
+.group-card_link:hover .ag-courses-item_date {
   text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  width: 80%;
-  height: 30px;
-  border-radius: 15px;
-  transition: all 0.5s;  
+  color: #FFF;
 }
 
-.btn-approve:hover {
-  width: 88%;
-  height: 33px;
-  border-radius: 16.5px;
+.groups-container {
+  width: 1142px;
+  margin: 0 auto;
+}
+
+
+.group-card_link:hover .group-card_bg {
+  -webkit-transform: scale(10);
+  -ms-transform: scale(10);
+  transform: scale(10);
+}
+.group-card_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+
+  overflow: hidden;
+
+  font-weight: bold;
+  font-size: 30px;
+  color: #FFF;
+
+  z-index: 2;
+  position: relative;
+}
+.group-card_date-box {
+  font-size: 18px;
+  color: #FFF;
+
+  z-index: 2;
+  position: relative;
+}
+.group-card_date {
+  font-weight: bold;
+  color: #f9b234;
+
+  -webkit-transition: color .5s ease;
+  -o-transition: color .5s ease;
+  transition: color .5s ease
+}
+.group-card_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+
+  border-radius: 50%;
+
+  -webkit-transition: all .5s ease;
+  -o-transition: all .5s ease;
+  transition: all .5s ease;
+}
+.group-card:nth-child(2n) .group-card_bg {
+  background-color: #3ecd5e;
+}
+.group-card:nth-child(3n) .group-card_bg {
+  background-color: #e44002;
+}
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+}
+
+
+
+@media only screen and (max-width: 979px) {
+  .group-card {
+    -ms-flex-preferred-size: calc(50% - 30px);
+    flex-basis: calc(50% - 30px);
+  }
+  .group-card_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .groups-container {
+    width: 96%;
+  }
+
+}
+@media only screen and (max-width: 639px) {
+  .group-card {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  .group-card_title {
+    min-height: 72px;
+    line-height: 1;
+
+    font-size: 24px;
+  }
+  .group-card_link {
+    padding: 22px 40px;
+  }
+  .group-card_date-box {
+    font-size: 16px;
+  }
 }
